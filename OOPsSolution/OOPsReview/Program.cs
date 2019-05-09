@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace OOPsReview
 {
     class Program
@@ -27,21 +29,31 @@ namespace OOPsReview
             //      specified
             //current value of aVariable is null
 
-            myData aVariable = null;
+            FencePanel aVariable = null;
             //if you use the new command with the class 
             //      the new command will physically create
             //      an instance of the class
-            myData anInstance = new myData();
 
-            if(aVariable ==  null)
-            {
-                Console.WriteLine("aVariable has nothing in it");
-            }
+            //when this statement is executed, the default 
+            //      constructor of the FencePanel class will be called on
+            //      your behalf
+            FencePanel anInstance = new FencePanel();
+            anInstance.Height = 5.8;
+            anInstance.Width = 8.0;
+            anInstance.Style = "Neighbor Friendly";
 
-            if(anInstance ==  null)
-            {
-                Console.WriteLine("anInstance has nothing in it");
-            }
+            Console.WriteLine("height is: " + anInstance.Height.ToString());
+            Console.WriteLine("Width is: " + anInstance.Width.ToString());
+            Console.WriteLine("Style is: " + anInstance.Style.ToString());
+            Console.WriteLine("price is:" + anInstance.Price.ToString() + "\n");
+
+        
+            FencePanel anGInstance = new FencePanel(4.0,6.8,"private", 32.89);
+            Console.WriteLine("height is: " + anGInstance.Height.ToString());
+            Console.WriteLine("Width is: " + anGInstance.Width.ToString());
+            Console.WriteLine("Style is: " + anGInstance.Style.ToString());
+            Console.WriteLine("price is:" + anGInstance.Price.ToString() + "\n");
+
             Console.ReadLine();
         }//eom
     }//eoc

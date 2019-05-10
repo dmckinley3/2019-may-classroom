@@ -110,11 +110,9 @@ namespace OOPsReview
             Price = price;
         }
         //behaviour (aka method)
-        public double EstimatedNumberOfPanels(double linearlength,double gatewidth, int numberofgates)
+        public double EstimatedNumberOfPanels(double linearlength)
         {
-            double totalgatewidth = gatewidth * numberofgates;
-            double fencewidth = linearlength - totalgatewidth;
-            double numberofpanels = fencewidth / Width;
+            double numberofpanels = linearlength / Width;
 
             return numberofpanels;
         }

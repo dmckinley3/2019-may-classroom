@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOPsReview
 {
-    class Class1
+    public class FenceEstimate
     {
+        public FencePanel Fence { get; set; }
+        public List<GateClass> Gates { get; set; }
     }
 }

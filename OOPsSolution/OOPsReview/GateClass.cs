@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace OOPsReview
 {
-    class GateClass
+   public class GateClass
     {
         //auto implemented properties
         public double Height { get; set; }
         public double Width { get; set; }
-
         public double? Price { get; set; }
 
-        //private string(storage area for data)
+        //storage area for data
         private string _style;
 
         //fully implemented property
@@ -57,11 +56,17 @@ namespace OOPsReview
             Price = price;
         }
 
-        //TODO: HOW DO I DO THIS METHOD. WHAT AM I PASSING IN, WHAT AM I RETURNING?
-        //method
-        public double EstimatedGate ()
+     //Read-only Property
+     //Contains NO set{}
+     //data used in this property is data that is currently
+     //     within the instance of this class
+     public double GateArea
         {
-
+            get
+            {
+                return Height * Width;
+            }
         }
+
     }
 }

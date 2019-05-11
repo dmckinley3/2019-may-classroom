@@ -55,12 +55,13 @@ namespace OOPsReview
             Console.WriteLine("price is:" + anGInstance.Price.ToString() + "\n");
 
             //using instances of classes
+            Console.WriteLine("\n Entering Gate data\n");
             string menuItem = "0";
             FenceEstimate CustomerFence = new FenceEstimate();
             //place data from right side into left side
          
             CustomerFence.Fence = anGInstance;
-            CustomerFence.Gates = null;
+            CustomerFence.Gates = new List<GateClass>();
             string inputValue;
             GateClass theGate = null;
             do

@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    Page.Title = "Textboxes";
+
+    //retrieve the data from the form controls
+    //the form controls can be accessed via the request object
+    //the request object has several collections
+    //form controls are found in the .Form collection
+    //a particular control is referenced by its name in the form collection
+    //syntax Request.Form["namestring"]
+    //GENERALLY ALL data from controls are strings
+    var leftdata = Request.Form["controlleft"]; //retrieve the control contents
+    var rightdata = Request.Form["controlright"];//retrieve the control contents
+    var thebutton = Request.Form["formbutton"];//retrieve the control contents
+    var results = ""; //page local variable
+
+}
+
+@section banner{
+    <h1>TextBoxes</h1>
+}
+@if (IsPost)
+{
+    <p> You pressed the @thebutton button</p>
+    if(thebutton.Equals("left"))
+    {
+        results = leftdata;
+    }
+    else
+    {
+        results = rightdata;
+    }
+}
+<form id="theForm" method="post">
+    <div class="row">
+        <div class="col-md-offset-4">
+            <label id="Concerns" for="Results">Results:</label>
+            <input type="text" id="Results" name="Results" readonly="readonly" value="@results" />
+        </div>
+    </div>
+    <div class="Row">
+        <div class="col-md-6">
+            <label for="controlleft" id="lefttitle">Left Side</label>
+            <input type="text" id="controlleft" name="controlleft" placeholder="enter some data" value="@leftdata"/>
+            <br />
+            <input type="submit" id="formbutton" name="formbutton" class="btn" value="left" />
+        </div>
+        <div class="col-md-6">
+            <label for="controlright" id="righttitle">Right Side</label>
+            <input type="text" id="controlright" name="controlright" placeholder="enter some data" value="@rightdata"/>
+            <br />
+            <input type="submit" id="formbutton" name="formbutton" class="btn" value="right" />
+        </div>
+    </div>
+</form>

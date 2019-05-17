@@ -1,8 +1,75 @@
 ﻿@{
     Layout = "~/_Layout.cshtml";
     Page.Title = "RadioButton List";
+
+    var languagegroup = Request.Form["LanguageGroup"];
+    var scriptgroup = Request.Form["ScriptGroup"];
 }
 
 @section banner{
     <h1>RadioButton List</h1>
 }
+
+@if (IsPost)
+{
+    //do none of this logic unless you are in a post back scenario
+
+    //validate input
+    if (languagegroup.IsEmpty() || scriptgroup.IsEmpty())
+    {
+        <p><span style="color:firebrick">Make a Selection from both coding choices</span></p>
+    }
+    else
+    {
+        if (languagegroup.Equals("C#", StringComparison.OrdinalIgnoreCase))
+        {
+            <p>You will enjoy the CPSC 1517 course. We use C#.</p>
+        }
+        else
+        {
+            <p>Too bad. Unfortunately the CPSC 1517 course does not use @languagegroup</p>
+        }
+        if (scriptgroup.Equals("Razor", StringComparison.OrdinalIgnoreCase))
+        {
+            <p>You will enjoy the CPSC 1517 course. We use Razor.</p>
+        }
+        else
+        {
+            <p>Too bad. Unfortunately the CPSC 1517 course does not use @scriptgroup</p>
+        }
+    }
+}
+else
+{
+    //the else side is only done when the page is considered 1st time(ispost is true)
+    //this is an excellent place to put logic that needs to happen when the page is being generated for the first time
+}
+
+<form id="theform" method="post">
+    <div class="row">
+        <div class="col-sm-offset-1">
+            <label id="LanguageGroupLabel" for="LanguageGroup">
+                Select Your favorite programming language
+            </label><br />
+            <input type="radio" id="LanguageGroup" name="LanguageGroup" value="C#" />C#<br />
+            <input type="radio" id="LanguageGroup" name="LanguageGroup" value="VB" />Visual Basic<br />
+            <input type="radio" id="LanguageGroup" name="LanguageGroup" value="Cobol" />Cobol<br />
+            <input type="radio" id="LanguageGroup" name="LanguageGroup" value="Fortran" />Fortran<br />
+
+            <label id="ScriptGrouplabel" for="ScriptGroup">
+                Select Your favorite Scriptingcode
+            </label><br />
+            <input type="radio" id="ScriptGroup" name="ScriptGroup" value="JS" />JavaScript<br />
+            <input type="radio" id="ScriptGroup" name="ScriptGroup" value="Razor" />Razor<br />
+            <input type="radio" id="ScriptGroup" name="ScriptGroup" value="PHP" />PHP<br />
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-offset-1">
+            <input type="submit" class="btn btn-primary" id="formButton" name="formButton" value="Submit" />
+        </div>
+    </div>
+
+</form>
